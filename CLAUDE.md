@@ -3,16 +3,25 @@
 Indie game development managed through 49 coordinated Claude Code subagents.
 Each agent owns a specific domain, enforcing separation of concerns and quality.
 
+## Project: Sea Trader Remake (רימייק "סוחר הים")
+
+Modern remake of the Hebrew DOS game "סוחר הים" (Turbo Pascal, 1980s).
+Game logic must be a faithful 1:1 reconstruction of the original engine
+(source of truth: the reverse-engineering docs in
+`רימיקס לסוחר הים/מנגנון הפעלה והגרלת סיכויים ואירועים/`), wrapped in a
+modern mouse-driven pixel-art UI. Hebrew (RTL) UI. Offline Windows desktop.
+See `תיעוד התקדמות.md` for full project state and decisions log.
+
 ## Technology Stack
 
-- **Engine**: [CHOOSE: Godot 4 / Unity / Unreal Engine 5]
-- **Language**: [CHOOSE: GDScript / C# / C++ / Blueprint]
+- **Engine**: Godot 4.6 (pinned — see `docs/engine-reference/godot/VERSION.md`)
+- **Language**: GDScript (static typing enforced)
 - **Version Control**: Git with trunk-based development
-- **Build System**: [SPECIFY after choosing engine]
-- **Asset Pipeline**: [SPECIFY after choosing engine]
+- **Build System**: Godot export templates — Windows Desktop (single EXE + PCK)
+- **Asset Pipeline**: Godot import pipeline; pixel-art textures (nearest filtering)
 
 > **Note**: Engine-specialist agents exist for Godot, Unity, and Unreal with
-> dedicated sub-specialists. Use the set matching your engine.
+> dedicated sub-specialists. This project uses the **Godot** set.
 
 ## Project Structure
 

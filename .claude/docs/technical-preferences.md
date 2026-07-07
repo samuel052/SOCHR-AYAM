@@ -5,83 +5,75 @@
 
 ## Engine & Language
 
-- **Engine**: [TO BE CONFIGURED — run /setup-engine]
-- **Language**: [TO BE CONFIGURED]
-- **Rendering**: [TO BE CONFIGURED]
-- **Physics**: [TO BE CONFIGURED]
+- **Engine**: Godot 4.6 (pinned 2026-02-12; see `docs/engine-reference/godot/VERSION.md`)
+- **Language**: GDScript with static typing (every var/param/return typed)
+- **Rendering**: 2D, **Compatibility renderer (OpenGL)** — widest support on older Windows machines (target audience: adults on modest PCs); pixel-art with nearest-neighbor filtering
+- **Physics**: Not used (turn-based game, no physics simulation)
 
 ## Input & Platform
 
-<!-- Written by /setup-engine. Read by /ux-design, /ux-review, /test-setup, /team-ui, and /dev-story -->
-<!-- to scope interaction specs, test helpers, and implementation to the correct input methods. -->
-
-- **Target Platforms**: [TO BE CONFIGURED — e.g., PC, Console, Mobile, Web]
-- **Input Methods**: [TO BE CONFIGURED — e.g., Keyboard/Mouse, Gamepad, Touch, Mixed]
-- **Primary Input**: [TO BE CONFIGURED — the dominant input for this game]
-- **Gamepad Support**: [TO BE CONFIGURED — Full / Partial / None]
-- **Touch Support**: [TO BE CONFIGURED — Full / Partial / None]
-- **Platform Notes**: [TO BE CONFIGURED — any platform-specific UX constraints]
+- **Target Platforms**: Windows desktop (x86_64), offline single-player
+- **Input Methods**: Mouse (primary), Keyboard (shortcuts + text/number entry)
+- **Primary Input**: Mouse — every game action must be fully playable with mouse only
+- **Gamepad Support**: None
+- **Touch Support**: None
+- **Platform Notes**: Hebrew RTL UI throughout (Godot 4 TextServer BiDi). Windowed + fullscreen. No network access at runtime.
 
 ## Naming Conventions
 
-- **Classes**: [TO BE CONFIGURED]
-- **Variables**: [TO BE CONFIGURED]
-- **Signals/Events**: [TO BE CONFIGURED]
-- **Files**: [TO BE CONFIGURED]
-- **Scenes/Prefabs**: [TO BE CONFIGURED]
-- **Constants**: [TO BE CONFIGURED]
+- **Classes**: PascalCase (`class_name TradeEngine`)
+- **Variables**: snake_case; private prefixed `_`
+- **Signals/Events**: snake_case, past tense (`voyage_resolved`, `price_changed`)
+- **Files**: snake_case (`trade_engine.gd`, `main_port_screen.tscn`)
+- **Scenes/Prefabs**: snake_case `.tscn`, one scene per screen/component
+- **Constants**: CONSTANT_CASE; enums PascalCase with CONSTANT_CASE members
 
 ## Performance Budgets
 
-- **Target Framerate**: [TO BE CONFIGURED]
-- **Frame Budget**: [TO BE CONFIGURED]
-- **Draw Calls**: [TO BE CONFIGURED]
-- **Memory Ceiling**: [TO BE CONFIGURED]
+- **Target Framerate**: 60 FPS
+- **Frame Budget**: 16.6 ms (trivially met; no per-frame simulation)
+- **Draw Calls**: < 100 per screen
+- **Memory Ceiling**: < 512 MB
 
 ## Testing
 
-- **Framework**: [TO BE CONFIGURED]
-- **Minimum Coverage**: [TO BE CONFIGURED]
-- **Required Tests**: Balance formulas, gameplay systems, networking (if applicable)
+- **Framework**: gdUnit4 (headless via `godot --headless --script tests/gdunit4_runner.gd`)
+- **Minimum Coverage**: 100% of game-logic formulas (every formula from the reverse-engineering docs gets at least one unit test; RNG injected/seeded for determinism)
+- **Required Tests**: Balance formulas, event-engine distributions (statistical tests with fixed seeds), game-state transitions
 
 ## Forbidden Patterns
 
-<!-- Add patterns that should never appear in this project's codebase -->
-- [None configured yet — add as architectural decisions are made]
+- **No game logic in UI scripts.** All rules/formulas/RNG live in the pure logic module (`src/core/`), which must not reference the scene tree, `Node`, or any UI type (use `RefCounted`).
+- **No direct `randi()`/`randf()` in logic code.** All randomness flows through an injected RNG service (seedable for tests and replays).
+- **No hardcoded balance values.** Every tunable number lives in external config (`assets/data/*.json` or `.tres`), loaded at startup — per coding standards.
+- **No deviation from original-game formulas without an approved ADR.** Source of truth: binary reverse-engineering docs; gaps filled per the decisions log in `תיעוד התקדמות.md`.
+- **No hardcoded UI strings.** All player-facing text goes through a strings table (Hebrew now, translatable later).
 
 ## Allowed Libraries / Addons
 
-<!-- Add approved third-party dependencies here -->
-- [None configured yet — add as dependencies are approved]
+- gdUnit4 (testing only)
+- [Add others via ADR approval]
 
 ## Architecture Decisions Log
 
-<!-- Quick reference linking to full ADRs in docs/architecture/ -->
-- [No ADRs yet — use /architecture-decision to create one]
+- [ADRs to be created in the architecture phase — use /architecture-decision]
 
 ## Engine Specialists
 
-<!-- Written by /setup-engine when engine is configured. -->
-<!-- Read by /code-review, /architecture-decision, /architecture-review, and team skills -->
-<!-- to know which specialist to spawn for engine-specific validation. -->
-
-- **Primary**: [TO BE CONFIGURED — run /setup-engine]
-- **Language/Code Specialist**: [TO BE CONFIGURED]
-- **Shader Specialist**: [TO BE CONFIGURED]
-- **UI Specialist**: [TO BE CONFIGURED]
-- **Additional Specialists**: [TO BE CONFIGURED]
-- **Routing Notes**: [TO BE CONFIGURED]
+- **Primary**: godot-specialist
+- **Language/Code Specialist**: godot-gdscript-specialist
+- **Shader Specialist**: godot-shader-specialist
+- **UI Specialist**: ui-programmer (consulting godot-specialist for Control/RTL specifics)
+- **Additional Specialists**: —
+- **Routing Notes**: Logic-module code review always goes through godot-gdscript-specialist; RTL/BiDi UI questions go to godot-specialist.
 
 ### File Extension Routing
 
-<!-- Skills use this table to select the right specialist per file type. -->
-<!-- If a row says [TO BE CONFIGURED], fall back to Primary for that file type. -->
-
 | File Extension / Type | Specialist to Spawn |
 |-----------------------|---------------------|
-| Game code (primary language) | [TO BE CONFIGURED] |
-| Shader / material files | [TO BE CONFIGURED] |
-| UI / screen files | [TO BE CONFIGURED] |
-| Scene / prefab / level files | [TO BE CONFIGURED] |
-| Native extension / plugin files | [TO BE CONFIGURED] |
-| General architecture review | Primary |
+| Game code (`.gd`) | godot-gdscript-specialist |
+| Shader / material files (`.gdshader`, `.tres` materials) | godot-shader-specialist |
+| UI / screen files (Control scenes, theme `.tres`) | ui-programmer |
+| Scene / prefab / level files (`.tscn`) | godot-specialist |
+| Native extension / plugin files | godot-gdextension-specialist |
+| General architecture review | godot-specialist (Primary) |
