@@ -124,6 +124,14 @@ func answer(decision_id: int, payload: Dictionary) -> Result:
 			return Result.failure(&"unknown_decision_kind")
 
 
+## Close the open decision when its resolution succeeded; a failed resolution
+## (invalid offer) keeps it open so the UI can re-prompt.
+func _close(r: Result) -> Result:
+	if r.ok:
+		state.pending = {}
+	return r
+
+
 func _resolve_crew(payload: Dictionary) -> Result:
 	var r: Result = morning.resolve_crew(payload)
 	if not r.ok:
