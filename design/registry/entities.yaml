@@ -37,7 +37,7 @@
 #   Each entry: name, status, source, referenced_by[], attributes{}, added, revised
 
 version: 1
-last_updated: ""
+last_updated: "2026-07-07"
 
 # ─── ENTITIES ────────────────────────────────────────────────────────────────
 # Named game-world objects: enemies, NPCs, characters, factions, bosses.
@@ -48,7 +48,31 @@ last_updated: ""
 # Attribute fields: any key stats that could appear in another GDD
 #   (health, damage, drops, faction, etc.)
 
-entities: []
+entities:
+  - name: port_israel        # חיפה
+    status: active
+    source: design/gdd/market-prices.md
+    referenced_by:
+      - design/gdd/time-calendar.md
+      - design/gdd/sailing-engine.md
+    added: 2026-07-07
+    revised: ""
+  - name: port_turkey        # מרסין
+    status: active
+    source: design/gdd/market-prices.md
+    referenced_by:
+      - design/gdd/time-calendar.md
+      - design/gdd/sailing-engine.md
+    added: 2026-07-07
+    revised: ""
+  - name: port_egypt         # פורט־סעיד
+    status: active
+    source: design/gdd/market-prices.md
+    referenced_by:
+      - design/gdd/time-calendar.md
+      - design/gdd/sailing-engine.md
+    added: 2026-07-07
+    revised: ""
 
 # Example (remove when first real entry is added):
 #
@@ -77,7 +101,49 @@ entities: []
 # Attribute fields: value_gold, weight, stackable, category, and any stat
 #   modifiers that another system (e.g., economy, crafting) might reference.
 
-items: []
+items:
+  - name: copper             # נחושת
+    status: active
+    source: design/gdd/market-prices.md
+    referenced_by:
+      - design/gdd/trading.md
+      - design/gdd/morning-events.md
+      - design/gdd/sailing-engine.md
+      - design/gdd/pirates.md
+    price_range: [2500, 3500]
+    price_step: 100
+    pirate_fixed_value: 3000   # ערך קבוע בפשרת פיראטים (pirates.md)
+    scan_order: 1              # סדר סריקה קבוע במקור
+    added: 2026-07-07
+    revised: ""
+  - name: olives             # זיתים
+    status: active
+    source: design/gdd/market-prices.md
+    referenced_by:
+      - design/gdd/trading.md
+      - design/gdd/morning-events.md
+      - design/gdd/sailing-engine.md
+      - design/gdd/pirates.md
+    price_range: [350, 650]
+    price_step: 50
+    pirate_fixed_value: 500
+    scan_order: 2
+    added: 2026-07-07
+    revised: ""
+  - name: wheat              # חיטה
+    status: active
+    source: design/gdd/market-prices.md
+    referenced_by:
+      - design/gdd/trading.md
+      - design/gdd/morning-events.md
+      - design/gdd/sailing-engine.md
+      - design/gdd/pirates.md
+    price_range: [35, 70]
+    price_step: 5
+    pirate_fixed_value: 50
+    scan_order: 3
+    added: 2026-07-07
+    revised: ""
 
 # Example:
 #
@@ -106,7 +172,43 @@ items: []
 #   output_range[min, max], added
 # Optional: expression (the actual formula), notes
 
-formulas: []
+formulas:
+  - name: general_ship_damage      # מנגנון הנזק הכללי (סערה/שרטון/נזק-מוחמר)
+    status: active
+    source: design/gdd/sailing-engine.md
+    referenced_by:
+      - design/gdd/sailing-engine.md
+      - design/gdd/ship-damage-repair.md
+    variables: [cash, cargo_value, damage]
+    output_range: [75, 999999]
+    expression: "dmg=5*trunc((cash+cargo_value)/(rand(100)+200)); dmg=max(dmg,75); if damage>0: dmg+=trunc(dmg/3); dmg=5*trunc(dmg/5)"
+    notes: "ללא בנק. מינימום 75 לתקינה, 100 מעשי לפגועה."
+    added: 2026-07-07
+    revised: ""
+  - name: total_wealth             # הון כולל לאירועי בוקר
+    status: active
+    source: design/gdd/morning-events.md
+    referenced_by:
+      - design/gdd/morning-events.md
+      - design/gdd/banking.md
+    variables: [cash, cargo_value]
+    output_range: [0, 999999]
+    expression: "cash + cargo_value(current_port)"
+    notes: "ללא יתרת בנק — במפורש."
+    added: 2026-07-07
+    revised: ""
+  - name: cargo_loss_pct           # אובדן מטען (סערה / גניבת סחורה)
+    status: active
+    source: design/gdd/sailing-engine.md
+    referenced_by:
+      - design/gdd/sailing-engine.md
+      - design/gdd/morning-events.md
+    variables: [qty]
+    output_range: [1, 999999]
+    expression: "clamp(trunc(qty*(4*rand(21))/100), 1, qty)"
+    notes: "0%-80% בקפיצות 4%; אותה נוסחה בסערת מטען ובגניבת לילה."
+    added: 2026-07-07
+    revised: ""
 
 # Example:
 #
@@ -139,7 +241,54 @@ formulas: []
 #
 # Required fields: name, status, source, referenced_by, value, unit, added
 
-constants: []
+constants:
+  - name: starting_cash
+    status: active
+    source: design/gdd/trading.md
+    referenced_by:
+      - design/gdd/scoring-endgame.md
+    value: 5000
+    unit: shekel
+    added: 2026-07-07
+    revised: ""
+  - name: starting_capacity
+    status: active
+    source: design/gdd/ship-damage-repair.md
+    referenced_by:
+      - design/gdd/trading.md
+      - design/gdd/sailing-engine.md
+    value: 100
+    unit: tons
+    added: 2026-07-07
+    revised: ""
+  - name: sail_block_damage
+    status: active
+    source: design/gdd/ship-damage-repair.md
+    referenced_by:
+      - design/gdd/time-calendar.md
+      - design/gdd/sailing-engine.md
+    value: 1000
+    unit: shekel
+    added: 2026-07-07
+    revised: ""
+  - name: night_sail_hour
+    status: active
+    source: design/gdd/time-calendar.md
+    referenced_by:
+      - design/gdd/sailing-engine.md
+    value: 16
+    unit: hour
+    added: 2026-07-07
+    revised: ""
+  - name: pirate_capture_capacity_bonus
+    status: active
+    source: design/gdd/pirates.md
+    referenced_by:
+      - design/gdd/ship-damage-repair.md
+    value: 50
+    unit: tons
+    added: 2026-07-07
+    revised: ""
 
 # Example:
 #
