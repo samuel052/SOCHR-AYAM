@@ -4,6 +4,14 @@ class_name FullGameTest
 extends GdUnitTestSuite
 
 
+## Stable stringification for transcripts: strips live objects (PendingDecision
+## references print instance IDs, which differ between runs by design).
+func _stable(data: Dictionary) -> String:
+	var clean: Dictionary = data.duplicate(true)
+	clean.erase("decision")
+	return str(clean)
+
+
 ## Plays a scripted, decision-answering week and returns a transcript string.
 func _play_scripted_week(seed_value: int) -> String:
 	var eng: GameEngine = TestConfig.engine(seed_value)
@@ -23,7 +31,7 @@ func _play_scripted_week(seed_value: int) -> String:
 			elif pd.kind == Types.DECISION_PIRATE_CHOICE:
 				payload = {"action": "fight"}
 			var answered: Result = eng.answer(pd.id, payload)
-			transcript += "ans(%s):%s;" % [String(pd.kind), str(answered.data)]
+			transcript += "ans(%s):%s;" % [String(pd.kind), _stable(answered.data)]
 			continue
 		# simple strategy: buy wheat, sail to Egypt if possible, else rest
 		if eng.state.cargo_total() == 0 and eng.state.cash > 0:
@@ -34,14 +42,14 @@ func _play_scripted_week(seed_value: int) -> String:
 		var dest: int = Types.Port.EGYPT if eng.state.port != Types.Port.EGYPT else Types.Port.ISRAEL
 		var sailed: Result = eng.sail(dest, 0)
 		if sailed.ok and sailed.data.has("result"):
-			transcript += "sail:%s;" % str(sailed.data["result"])
+			transcript += "sail:%s;" % _stable(sailed.data["result"])
 			if eng.state.cargo[Types.Good.WHEAT] > 0:
 				eng.sell(Types.Good.WHEAT, eng.state.cargo[Types.Good.WHEAT])
 		elif sailed.ok:
 			continue  # pirate decision pending
 		else:
 			var rested: Result = eng.rest()
-			transcript += "rest:%s;" % str(rested.data)
+			transcript += "rest:%s;" % _stable(rested.data)
 	transcript += "score:%d" % eng.score.final_score()
 	return transcript
 

@@ -75,11 +75,14 @@ func test_raw_family_weights_match_30_codes() -> void:
 	# minimized, observed shares should approximate the raw weights.
 	var eng := _engine(77)
 	eng.state.day = 3
-	eng.state.cash = 50000
-	eng.state.cargo = [5, 20, 90]
 	var counts: Dictionary = {}
 	var runs: int = 3000
 	for i in runs:
+		# refresh state every roll: fired events mutate cash/cargo (thefts,
+		# fishing) and would gradually disqualify families, skewing the counts
+		eng.state.cash = 50000
+		eng.state.cargo = [5, 20, 90]
+		eng.state.damage = 0
 		eng.state.last_event_family = ""  # neutralize the no-repeat rule
 		var family: String = _family_of(eng.morning.roll_event())
 		counts[family] = int(counts.get(family, 0)) + 1
