@@ -13,6 +13,8 @@ Desktop.ini
 .claude/settings.local.json
 CLAUDE.local.md
 production/session-logs/
+# Ephemeral session state (per .claude/docs/directory-structure.md); .gitkeep stays tracked
+production/session-state/active.md
 
 # === Internal Planning (not for public) ===
 
