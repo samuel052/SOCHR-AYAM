@@ -1,0 +1,12 @@
+{
+	"config_version": 1,
+	"start_capacity": 100,
+	"sail_block_damage": 1000,
+	"repair": {
+		"_comment": "יחס 1:1 בין תשלום להפחתת נזק — הנחה לאימות (GDD ship §4)",
+		"ratio_num": 1,
+		"ratio_den": 1,
+		"partial_allowed": true,
+		"dock_closed_one_in": 5
+	}
+}

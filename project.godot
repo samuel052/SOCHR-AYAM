@@ -1,0 +1,31 @@
+; Engine configuration for Sea Trader Remake (סוחר הים).
+; Renderer pinned to Compatibility per ADR-0005; RTL root layout per ADR-0006.
+
+config_version=5
+
+[application]
+
+config/name="Sochar HaYam"
+config/description="Remake of the Hebrew DOS trading game 'סוחר הים'"
+config/features=PackedStringArray("4.6", "GL Compatibility")
+
+[debug]
+
+gdscript/warnings/untyped_declaration=1
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
+
+[internationalization]
+
+rendering/root_node_layout_direction=2
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/canvas_textures/default_texture_filter=0

@@ -1,0 +1,56 @@
+{
+	"config_version": 1,
+	"gate": {
+		"_comment": "QQ-05: N=2*class+1+ceil(damage/400); משמעות class לא פוענחה — ברירת מחדל 1",
+		"class_default": 1,
+		"damage_divisor": 400
+	},
+	"storm": {
+		"cargo_value_threshold": 10000,
+		"loss_pct_step": 4,
+		"loss_pct_rolls": 21,
+		"goods_min_qty": 2
+	},
+	"damage": {
+		"divisor_base": 200,
+		"divisor_rolls": 100,
+		"min_damage": 75,
+		"repeat_bonus_divisor": 3,
+		"round_to": 5
+	},
+	"overload": {
+		"_comment": "מדרגות הסיכוי מהפיענוח; כלל ההשלכה (highest_value_half) הוא השלמה מהאפיון — GDD sailing §3.8",
+		"ladder": [
+			{ "over_max": 20, "one_in": 6 },
+			{ "over_max": 40, "one_in": 4 },
+			{ "over_max": 60, "one_in": 3 },
+			{ "over_max": 70, "one_in": 2 }
+		]
+	},
+	"port_block": {
+		"_comment": "QQ-06: הסתברות הענף לא פוענחה — כיול פתיחה 1/15; ערפל/שביתה 50/50",
+		"one_in": 15,
+		"fog_one_in": 2
+	},
+	"regular_table": {
+		"die": 20,
+		"pirates_max": 6,
+		"winds_value": 7,
+		"deserted_min": 9,
+		"deserted_max": 10
+	},
+	"deserted": {
+		"_comment": "QQ-07: אלגוריתם מהאפיון — ערך 100..שווי הספינה, יחידות לפי מחיר היעד בעיגול מעלה",
+		"value_min": 100
+	},
+	"guards": {
+		"_comment": "תמחור מהאפיון בלבד (לא בפיענוח) — GDD sailing §3.1",
+		"price_pct_num": 2,
+		"price_pct_den": 100,
+		"min_price": 75,
+		"storm_mult_num": 3,
+		"storm_mult_den": 2,
+		"night_mult_num": 5,
+		"night_mult_den": 4
+	}
+}

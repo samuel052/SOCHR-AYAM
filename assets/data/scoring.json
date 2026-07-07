@@ -1,0 +1,10 @@
+{
+	"config_version": 1,
+	"start_cash": 5000,
+	"score": {
+		"_comment": "QQ-02: הרכב הניקוד — include_bank=true הנחה לאימות DOSBox",
+		"include_bank": true,
+		"include_cargo": false
+	},
+	"hiscore_slots": 10
+}

@@ -1,0 +1,25 @@
+{
+	"config_version": 1,
+	"price": {
+		"_comment": "QQ-03: טווחי המחירים היומיים מהאפיון (התפלגות סיכויים) — לא פוענחו בבינארי",
+		"copper": { "min": 2500, "max": 3500, "step": 100 },
+		"olives": { "min": 350, "max": 650, "step": 50 },
+		"wheat": { "min": 35, "max": 70, "step": 5 },
+		"unique_across_ports": true
+	},
+	"price_event": {
+		"_comment": "QQ-04: base_mode fixed_mid = הנחה; חלופה daily_reference תוכרע באימות DOSBox",
+		"base_mode": "fixed_mid",
+		"fixed_base": { "copper": 3000, "olives": 500, "wheat": 50 },
+		"up": {
+			"copper": { "offset": 1100, "step": 100, "rolls": 5 },
+			"olives": { "offset": 200, "step": 50, "rolls": 4 },
+			"wheat": { "offset": 20, "step": 5, "rolls": 5 }
+		},
+		"down": {
+			"copper": { "offset": 1100, "step": 100, "rolls": 5 },
+			"olives": { "offset": 150, "step": 50, "rolls": 3 },
+			"wheat": { "offset": 15, "step": 5, "rolls": 3 }
+		}
+	}
+}

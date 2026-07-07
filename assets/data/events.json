@@ -1,0 +1,62 @@
+{
+	"config_version": 1,
+	"codes_total": 30,
+	"no_repeat_family": true,
+	"reroll_safety_limit": 1000,
+	"code_map": [
+		{ "from": 1, "to": 2, "family": "price", "good": "copper", "dir": "up" },
+		{ "from": 3, "to": 4, "family": "price", "good": "olives", "dir": "up" },
+		{ "from": 5, "to": 6, "family": "price", "good": "wheat", "dir": "up" },
+		{ "from": 7, "to": 8, "family": "price", "good": "copper", "dir": "down" },
+		{ "from": 9, "to": 10, "family": "price", "good": "olives", "dir": "down" },
+		{ "from": 11, "to": 12, "family": "price", "good": "wheat", "dir": "down" },
+		{ "from": 13, "to": 18, "family": "expand" },
+		{ "from": 19, "to": 20, "family": "crew" },
+		{ "from": 21, "to": 21, "family": "thieves", "variant": "money" },
+		{ "from": 22, "to": 22, "family": "thieves", "variant": "goods" },
+		{ "from": 23, "to": 26, "family": "merchant_buy" },
+		{ "from": 27, "to": 28, "family": "merchant_sell" },
+		{ "from": 29, "to": 30, "family": "fishing" }
+	],
+	"weather": {
+		"_comment": "rand(8)<3 = 37.5% לפי הפיענוח (האפיון אמר 50% — נדחה)",
+		"storm_numerator": 3,
+		"storm_denominator": 8
+	},
+	"crew": {
+		"day_min": 2,
+		"day_max": 5,
+		"divisor_base": 4,
+		"divisor_rolls": 6
+	},
+	"expand": {
+		"_comment": "Cost=10*(2Δ+rand(Δ)); סדר פירוק התשלום (cash→good→cash+good) הוא הנחה — GDD morning-events §3.3",
+		"delta_options": [50, 100]
+	},
+	"thieves": {
+		"_comment": "פיצול 21=כסף/22=סחורה הוא הנחה מתועדת — GDD §3.5",
+		"goods_min_qty": 2,
+		"goods_pct_step": 4,
+		"goods_pct_rolls": 21,
+		"money_divisor_base": 40,
+		"money_divisor_rolls": 40,
+		"money_multiple": 10
+	},
+	"merchant_buy": {
+		"min_qty": 1,
+		"deviation": {
+			"copper": { "step": 50, "rolls": 30, "offset": -600 },
+			"olives": { "step": 10, "rolls": 70, "offset": -300 },
+			"wheat": { "step": 5, "rolls": 14, "offset": -40 }
+		}
+	},
+	"merchant_sell": {
+		"_comment": "QQ-08: נוסחת הכמות היא השלמה מהאפיון — כפולות 5 עד התקציב",
+		"qty_step": 5
+	},
+	"fishing": {
+		"divisor_base": 150,
+		"divisor_rolls": 80,
+		"multiple": 10
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"config_version": 1,
+	"days_total": 7,
+	"day_start_hour": 8,
+	"day_end_hour": 20,
+	"night_hour": 16,
+	"travel": {
+		"israel_egypt": 4,
+		"israel_turkey": 4,
+		"egypt_turkey": 8
+	},
+	"crew_skip": {
+		"_comment": "QQ-09: פיענוח=1/2 ימים, תוכנית.txt=2/3 — ברירת מחדל לפי הפיענוח",
+		"refusal_days": 1,
+		"failed_negotiation_days": 2
+	}
+}
