@@ -1,0 +1,164 @@
+keys,he
+GAME_TITLE,סוחר הים
+BTN_CONTINUE,המשך
+BTN_NEW_GAME,משחק חדש
+BTN_LOAD,טעינת משחק
+BTN_HISCORES,שיאים
+BTN_SETTINGS,הגדרות
+BTN_QUIT,יציאה
+BTN_BACK,חזרה לנמל
+BTN_OK,המשך
+BTN_ACCEPT,קבל
+BTN_DECLINE,דחה
+BTN_CANCEL,ביטול
+BTN_MAX,מקס'
+BTN_EXECUTE,בצע
+BTN_SAVE,שמירת משחק
+BTN_SAVED,נשמר ✓
+BTN_TO_TITLE,למסך הפתיחה
+HUD_DAY_1,יום ראשון
+HUD_DAY_2,יום שני
+HUD_DAY_3,יום שלישי
+HUD_DAY_4,יום רביעי
+HUD_DAY_5,יום חמישי
+HUD_DAY_6,יום שישי
+HUD_DAY_7,יום שבת
+PORT_ISRAEL,ישראל
+PORT_TURKEY,תורכיה
+PORT_EGYPT,מצרים
+CITY_ISRAEL,חיפה
+CITY_TURKEY,מרסין
+CITY_EGYPT,פורט-סעיד
+GOOD_COPPER,נחושת
+GOOD_OLIVES,זיתים
+GOOD_WHEAT,חיטה
+SHEKEL,ש"ח
+TONS,טון
+HUD_WEATHER_GOOD,מזג האוויר נאה
+HUD_WEATHER_STORM,סערה ליד חופי %s
+HUD_SHIP_OK,הספינה תקינה
+HUD_SHIP_DAMAGED,נזק: %s
+HUD_SHIP_BLOCKED,נזק: %s — לא ניתן להפליג!
+HUD_CARGO,מטען: %d/%d טון
+HUD_CASH,מזומן: %s
+HUD_BANK,בבנק: %s
+HUB_MENU_TITLE,האפשרויות העומדות בפניך:
+HUB_BUY,1. לקנות
+HUB_SELL,2. למכור
+HUB_SAIL,3. לנסוע
+HUB_BANK,4. לגשת לבנק
+HUB_REST,5. לנוח עד למחרת
+HUB_REPAIR,6. לתקן את הספינה
+HUB_NOTICE_BOARD,לוח המודעות
+HUB_SAIL_BLOCKED,יש לתקן את הספינה תחילה
+HUB_LAST_DAY,היום האחרון!
+CARD_DAY_TITLE,%s
+CARD_WEATHER_TITLE,מצב הים
+CARD_EVENT_TITLE,חדשות הבוקר
+CARD_SKIPPED_DAYS,הימים חלפו... צוות חדש עלה לספינה.
+EV_PRICE_UP,מחיר ה%s זינק ב%s! המחיר החדש: %s
+EV_PRICE_DOWN,מחיר ה%s צנח ב%s! המחיר החדש: %s
+EV_THIEVES_MONEY,גנבים פרצו לספינתך בלילה וגנבו %s!
+EV_THIEVES_GOODS,גנבים פרצו לספינתך בלילה וגנבו %d טון %s!
+EV_FISHING,סירת דיג התנגשה בספינתך. נגרם נזק בשווי %s.
+EV_EXPAND_OFFER,נגר הנמל מציע להגדיל את קיבולת ספינתך ב-%d טון.
+EV_EXPAND_PAY_CASH,המחיר: %s
+EV_EXPAND_PAY_GOODS,המחיר: %d טון %s
+EV_EXPAND_PAY_MIXED,המחיר: %d טון %s ובנוסף %s
+EV_MERCHANT_BUY,סוחר מציע לקנות את כל ה%s שברשותך — %d טון במחיר %s לטון (סה"כ %s).
+EV_MERCHANT_SELL,סוחר מציע למכור לך %d טון %s במחיר %s לטון (סה"כ %s).
+EV_CREW_STRIKE,צוות הספינה מאיים בנטישה!
+EV_CREW_EXPLAIN,ויתור יעלה ביום עבודה. מו"מ כושל יעלה ביומיים.
+EV_CREW_GIVE_UP,ויתור — צוות חדש מחר
+EV_CREW_NEGOTIATE,כניסה למו"מ
+EV_CREW_OFFER_TITLE,מה תציע לצוות?
+EV_CREW_ACCEPTED,הצוות קיבל את הצעתך! העבודה נמשכת.
+EV_CREW_REJECTED,הצוות דחה את הצעתך ונטש. אבדו יומיים.
+OFFER_VALUE,שווי ההצעה: %s
+MARKET_BUY_TITLE,שוק הקניה
+MARKET_SELL_TITLE,כיכר המכירה
+MARKET_PRICE_PER_TON,%s לטון
+MARKET_YOU_HAVE,ברשותך: %d טון
+MARKET_QTY,כמות:
+MARKET_TOTAL_COST,עלות כוללת: %s
+MARKET_TOTAL_GAIN,תמורה כוללת: %s
+MARKET_CASH_AFTER,מזומן לאחר: %s
+MARKET_OVERLOAD_WARN,⚠ מעבר לקיבולת: %d/%d טון
+MARKET_NO_CASH,אין מספיק מזומן
+MARKET_NO_STOCK,אין מלאי
+BANK_TITLE,הבנק
+BANK_DEPOSIT,הפקדה
+BANK_WITHDRAW,משיכה
+BANK_AFTER,מזומן לאחר: %s | בבנק לאחר: %s
+REPAIR_TITLE,רציף התיקונים
+REPAIR_DAMAGE_NOW,נזק נוכחי: %s
+REPAIR_OVER_LIMIT,מעל 1,000 — הספינה מנועה מהפלגה
+REPAIR_TO_LIMIT,תקן עד סף ההפלגה
+REPAIR_ALL,תקן הכול
+REPAIR_AFTER,נזק לאחר: %s | מזומן לאחר: %s
+REPAIR_CAN_SAIL,ניתן להפליג ✓
+REPAIR_CANT_SAIL,לא ניתן להפליג ✗
+REPAIR_CLOSED,רציף התיקונים סגור להיום. שוב מחר!
+VOYAGE_TITLE,לאן מפליגים?
+VOYAGE_OPTION,%s — %d שעות, הגעה %02d:00
+VOYAGE_TOO_LATE,מאוחר מדי לצאת
+VOYAGE_NIGHT_WARN,⚠ הפלגה לילית
+VOYAGE_STORM_AT,⚠ סערה ב%s
+VOYAGE_GUARDS_TITLE,שכירת ספינות משמר
+VOYAGE_GUARDS_PRICE,%s לספינת משמר
+VOYAGE_GUARDS_HELP,ככל שתשכור יותר — יגדל סיכויך מול שודדי ים.
+VOYAGE_GUARDS_TOTAL,סה"כ: %s
+VOYAGE_SAIL,הפלג!
+VOYAGE_WARN_NIGHT,ההפלגה תסתיים בחשכה. בלילה אורבים שרטונות. להפליג בכל זאת?
+VOYAGE_WARN_OVERLOAD,הספינה עמוסה מעל לקיבולתה ועלולה לשקוע. להפליג בכל זאת?
+VOYAGE_GO_ANYWAY,להפליג בכל זאת
+VOYAGE_STAY,לחזור
+VOYAGE_SAILING,מפליגים...
+VOYAGE_ARRIVED_SAFE,הגעת בשלום!!
+VOYAGE_EV_STORM_CARGO,הגלים הגבוהים שטפו מספינתך %d טון %s.
+VOYAGE_EV_STORM_SHIP,עקב הסערה נגרם לספינתך נזק בשווי %s.
+VOYAGE_EV_SHOAL,בלילה — עלית על שרטון! עקב תנאי הראות הגרועים נגרם נזק בשווי %s.
+VOYAGE_EV_WORSE,הנסיעה בספינתך הניזוקה החמירה את הנזק ב-%s.
+VOYAGE_EV_OVERLOAD,הספינה החלה לשקוע! נאלצת להשליך לים %d טון %s.
+VOYAGE_EV_FOG,לא ניתן לעגון — ערפל כבד בנמל. הספינה שבה לנמל המוצא.
+VOYAGE_EV_STRIKE,לא ניתן לעגון — שביתה בנמל. הספינה שבה לנמל המוצא.
+VOYAGE_EV_WINDS,כתוצאה מרוחות חזקות וטעות בניווט הגעת ל%s במקום ל%s.
+VOYAGE_EV_DESERTED,נתקלת בספינה נטושה! אספת ממנה %d טון %s.
+PIRATES_TITLE,שודדי ים!
+PIRATES_WHAT_DO,ספינת שודדים מתקרבת. מה תעשה?
+PIRATES_FIGHT,להתקיף
+PIRATES_FLEE,לברוח
+PIRATES_COMPROMISE,להציע פשרה
+PIRATES_FACTS,משמר: %d | מטען: %d/%d | נזק: %s
+PIRATES_OFFER_TITLE,מה תציע לשודדים?
+PIRATES_CASH_LOCKED,אין לך די מזומן להצעה כספית
+PIRATES_WON_LOOT,ניצחת בקרב! על ספינת השודדים נמצא מטמון: %s!
+PIRATES_WON_CAPTURE,ניצחת בקרב! לקחת את ספינת השודדים בשבי — הקיבולת גדלה ב-%d טון!
+PIRATES_BATTLE_DAMAGE,במהלך הקרב נגרם לספינתך נזק בשווי %s.
+PIRATES_LOST,הפסדת בקרב. השודדים גנבו %s וגרמו נזק בשווי %s.
+PIRATES_FLED,הצלחת להימלט משודדי הים!
+PIRATES_FLEE_HEAVY,ספינתך כבדה מדי ולא הצליחה לברוח.
+PIRATES_FLEE_DAMAGED,לא הצלחת לברוח עקב הנזק שבספינתך.
+PIRATES_FLEE_OUTRUN,ספינת הפיראטים המהירה הצליחה להשיג את ספינתך.
+PIRATES_COMPROMISE_OK,השודדים קיבלו את הצעתך והניחו לך.
+PIRATES_COMPROMISE_NO,השודדים דחו את הצעתך!
+END_TITLE_DONE,השבוע הסתיים!
+END_TITLE_STUCK,דרכך נחסמה...
+END_SCORE,צברת %s
+END_LAST_CARGO_WARN,נותרה על הספינה סחורה שלא נמכרה. לסיים בכל זאת?
+HISCORES_TITLE,טבלת השיאים
+HISCORES_EMPTY,היה הראשון שייכנס לטבלה!
+HISCORES_ENTER_NAME,הישג חדש! מה שמך?
+HISCORES_DEFAULT_NAME,אלמוני
+NOTICE_TITLE,לוח המודעות
+NOTICE_NONE,אין מודעות חדשות היום.
+SETTINGS_TITLE,הגדרות
+SETTINGS_FULLSCREEN,מסך מלא
+SETTINGS_BIG_TEXT,טקסט גדול
+SETTINGS_REDUCED_MOTION,הפחתת תנועה
+SETTINGS_MUSIC,עוצמת מוזיקה
+SETTINGS_SFX,עוצמת אפקטים
+ERR_NOT_ENOUGH_CASH,אין מספיק מזומן
+ERR_NOT_ENOUGH_CARGO,אין מספיק סחורה
+ERR_OFFER_TOO_MUCH,הצעת יותר ממה שברשותך
+ERR_GENERIC,הפעולה נכשלה

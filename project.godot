@@ -8,6 +8,11 @@ config_version=5
 config/name="Sochar HaYam"
 config/description="Remake of the Hebrew DOS trading game 'סוחר הים'"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+run/main_scene="res://src/ui/boot.tscn"
+
+[autoload]
+
+GameFacade="*res://src/foundation/game_facade.gd"
 
 [debug]
 
