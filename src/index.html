@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>סוחר הים — רימיקס</title>
+<link rel="stylesheet" href="ui/style.css">
+</head>
+<body>
+<div id="app">
+  <section id="start-screen">
+    <div class="title-flags"><h1>⚓ סוחר הים</h1></div>
+    <p class="subtitle">רימיקס נאמן למשחק הישראלי הקלאסי (1991)</p>
+    <div id="title-scene"></div>
+    <p>שבוע ימים, שלושה נמלים, שלוש סחורות — כמה תצליח להרוויח?</p>
+    <button id="btn-new-game" class="primary big">משחק חדש</button>
+    <div id="highscores-home"></div>
+  </section>
+
+  <section id="game-screen" hidden>
+    <div id="layout">
+      <div id="stage"></div>
+      <aside id="sidebar"></aside>
+    </div>
+    <div id="boards"></div>
+    <div id="log-wrap"><h3>📜 יומן הקפטן</h3><ul id="log"></ul></div>
+  </section>
+
+  <section id="score-screen" hidden></section>
+</div>
+<script type="module" src="ui/app.js"></script>
+</body>
+</html>

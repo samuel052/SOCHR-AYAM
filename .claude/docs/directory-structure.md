@@ -1,18 +1,29 @@
-# Directory Structure
+# Directory Structure — Socher Hayam
 
 ```text
 /
-├── CLAUDE.md                    # Master configuration
-├── .claude/                     # Agent definitions, skills, hooks, rules, docs
-├── src/                         # Game source code (core, gameplay, ai, networking, ui, tools)
-├── assets/                      # Game assets (art, audio, vfx, shaders, data)
-├── design/                      # Game design documents (gdd, narrative, levels, balance)
-├── docs/                        # Technical documentation (architecture, api, postmortems)
-│   └── engine-reference/        # Curated engine API snapshots (version-pinned)
-├── tests/                       # Test suites (unit, integration, performance, playtest)
-├── tools/                       # Build and pipeline tools (ci, build, asset-pipeline)
-├── prototypes/                  # Throwaway prototypes (isolated from src/)
-└── production/                  # Production management (sprints, milestones, releases)
-    ├── session-state/           # Ephemeral session state (active.md — gitignored)
-    └── session-logs/            # Session audit trail (gitignored)
+├── README.md                     # Project entry point
+├── CLAUDE.md                     # Mandatory instructions for language models
+├── PROJECT-STATUS.md             # Current stage and next task
+├── package.json                  # test, verify and serve commands
+├── src/                          # The only active game implementation
+│   ├── core/                     # Verified gameplay engine
+│   ├── ui/                       # Presentation and interaction layer
+│   ├── tests/                    # 56 regression/fidelity tests
+│   └── index.html                # Browser entry point
+├── design/
+│   ├── reference-materials/      # User plans, mockups and original screenshots
+│   ├── gdd/                      # Approved game-design documents
+│   ├── ux/                       # Screen flows and UX specifications
+│   └── registry/                 # Studio entity registry
+├── docs/
+│   ├── reverse-engineering/      # Canonical binary analysis and final spec
+│   └── studio-framework/         # Generic process/framework documentation
+├── reference/original-game/      # Read-only DOS source snapshot
+├── tools/                        # Verification, local server and audit utilities
+├── archive/legacy-analysis/      # Non-authoritative historical analysis
+├── .claude/                      # Optional agents, skills and process tooling
+└── production/                   # Optional production tracking
 ```
+
+All active work starts from the repository root. Do not create a second project tree or a parallel staging copy inside the repository.

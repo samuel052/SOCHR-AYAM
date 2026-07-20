@@ -1,0 +1,175 @@
+/* ui/style.css — M3: עיצוב משולב רטרו-מודרני ברוח מסכי ה-CGA המקוריים:
+   רקע ירוק-ים, מגילה חומה לתפריט, פאנלים כחולים-כהים בעמודת המצב,
+   שלושה לוחות מחירים אדומים-חומים בתחתית — בפריסה של המסך הראשי המקורי. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #2a6e57;            /* הירוק של המסך הראשי */
+  --bg-dark: #1d5545;
+  --scroll: #b5772f;        /* המגילה החומה */
+  --scroll-dark: #7a4a1d;
+  --scroll-light: #d09a4e;
+  --panel: #1b2f6e;         /* הפאנלים הכחולים */
+  --panel-light: #2743a6;
+  --board: #9c3b2e;         /* לוחות המחירים */
+  --board-dark: #7a2d22;
+  --gold: #ffd76a;
+  --parchment: #f5efd8;
+  --ink: #2a1d08;
+  --good: #58d68d; --bad: #ff8a7a;
+}
+body {
+  font-family: "Segoe UI", "Arial Hebrew", Arial, sans-serif;
+  background: var(--bg);
+  background-image: radial-gradient(ellipse at 50% -20%, #35836a 0%, var(--bg) 55%);
+  color: #fff; min-height: 100vh;
+}
+#app { max-width: 980px; margin: 0 auto; padding: 12px; }
+
+h1 { color: var(--gold); text-shadow: 2px 2px 0 var(--scroll-dark); }
+button {
+  font: inherit; cursor: pointer;
+  border: 2px solid var(--scroll-dark); border-radius: 8px;
+  background: var(--parchment); color: var(--ink);
+  padding: 8px 16px; font-weight: 600;
+  box-shadow: 0 2px 0 var(--scroll-dark);
+}
+button:hover:not(:disabled) { background: #fff8e6; transform: translateY(-1px); }
+button:active:not(:disabled) { transform: translateY(1px); box-shadow: none; }
+button:disabled { opacity: .45; cursor: default; }
+button.primary { background: var(--panel-light); border-color: var(--panel); color: #fff; box-shadow: 0 2px 0 var(--panel); }
+button.primary:hover:not(:disabled) { background: #3454c4; }
+button.danger { background: var(--board); border-color: var(--board-dark); color: #fff; box-shadow: 0 2px 0 var(--board-dark); }
+button.big { font-size: 1.25rem; padding: 12px 36px; }
+
+input[type=number], input[type=text], select {
+  font: inherit; padding: 7px 10px;
+  border: 2px solid var(--scroll-dark); border-radius: 6px;
+  background: var(--parchment); color: var(--ink);
+}
+input[type=number] { width: 100px; }
+
+/* ---------- מסכי פתיחה/סיום ---------- */
+#start-screen, #score-screen { text-align: center; padding: 28px 16px; }
+#start-screen p, #score-screen p { margin: 10px 0; }
+.subtitle { color: var(--gold); font-weight: 600; }
+.title-flags {
+  display: inline-block; background: var(--board);
+  border: 3px solid var(--board-dark); border-radius: 10px;
+  padding: 8px 40px; margin-bottom: 8px;
+  box-shadow: 0 4px 0 var(--board-dark);
+}
+#title-scene, #score-scene { max-width: 560px; margin: 12px auto; }
+#title-scene svg, #score-scene svg { border-radius: 12px; border: 3px solid var(--scroll-dark); }
+.final { font-size: 1.5rem; color: var(--gold); }
+
+/* ---------- פריסת המשחק ---------- */
+#layout { display: flex; gap: 12px; margin-bottom: 12px; align-items: stretch; }
+#stage { flex: 1; min-width: 0; }
+#sidebar { width: 210px; flex-shrink: 0; display: flex; flex-direction: column; gap: 8px; }
+
+/* עמודת המצב — פאנלים כחולים כמו במקור */
+.spanel {
+  background: var(--panel); border: 2px solid var(--panel-light);
+  border-radius: 8px; padding: 8px 12px;
+}
+.spanel .cap {
+  color: var(--gold); font-size: .8rem; font-weight: 700;
+  border-bottom: 1px solid var(--panel-light); padding-bottom: 3px; margin-bottom: 5px;
+}
+.spanel .kv { display: flex; justify-content: space-between; padding: 1px 0; font-size: .95rem; }
+.spanel .kv b { color: var(--gold); }
+.spanel .kv b.bad { color: var(--bad); }
+.spanel.hero { text-align: center; }
+.spanel.hero .big-val { font-size: 1.5rem; font-weight: 800; color: var(--gold); }
+
+/* ---------- הבמה ---------- */
+.stage-card {
+  background: var(--bg-dark); border: 3px solid var(--scroll-dark);
+  border-radius: 12px; overflow: hidden; height: 100%;
+  display: flex; flex-direction: column;
+}
+.scene { display: block; width: 100%; height: auto; }
+#map { display: block; width: 100%; height: auto; background: #1e5f96; }
+.map-port { font: 700 15px "Segoe UI", Arial; fill: #fff; paint-order: stroke; stroke: #123; stroke-width: 3px; }
+.map-city { font: 12px "Segoe UI", Arial; fill: #ffeecb; paint-order: stroke; stroke: #123; stroke-width: 2.5px; }
+
+.stage-body { padding: 12px 16px 14px; flex: 1; }
+.stage-body h3 { color: var(--gold); margin-bottom: 6px; }
+.stage-body p { margin-bottom: 10px; line-height: 1.45; }
+.stage-body .note { font-size: .85rem; opacity: .75; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; }
+label { display: flex; align-items: center; gap: 6px; }
+
+/* מגילת התפריט */
+.menu-scroll {
+  background: var(--scroll);
+  background-image: linear-gradient(90deg, var(--scroll-dark) 0, var(--scroll) 18px, var(--scroll) calc(100% - 18px), var(--scroll-dark) 100%);
+  border: 3px solid var(--scroll-dark); border-radius: 14px;
+  padding: 14px 26px; margin: 0;
+}
+.menu-scroll h3 { color: var(--ink); text-align: center; margin-bottom: 10px; font-size: 1.15rem; }
+.menu-scroll .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.menu-scroll button { text-align: right; font-size: 1.02rem; }
+.menu-scroll button.wide { grid-column: 1 / -1; }
+
+/* מידע קנייה/מכירה במסך המסחר */
+.trade-info {
+  background: var(--panel); border: 2px solid var(--panel-light);
+  border-radius: 8px; padding: 4px 0; margin-bottom: 12px;
+}
+.trade-info .brow {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 4px 12px; color: #ffeecb; font-size: .95rem;
+}
+.trade-info .price {
+  background: var(--panel-light); border-radius: 5px; padding: 2px 10px;
+  font-weight: 700; color: var(--gold);
+}
+
+/* ---------- לוחות המחירים ---------- */
+#boards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px; }
+.board {
+  background: var(--board); border: 3px solid var(--board-dark);
+  border-radius: 10px; overflow: hidden;
+}
+.board.here { outline: 3px solid var(--gold); }
+.board .bhead {
+  background: var(--board-dark); color: var(--gold);
+  font-weight: 800; text-align: center; padding: 5px; font-size: 1.05rem;
+}
+.board .brow {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 4px 10px; color: #ffeecb;
+}
+.board .brow .price {
+  background: var(--panel); border-radius: 5px; padding: 2px 10px;
+  font-weight: 700; color: #fff; min-width: 74px; text-align: center;
+}
+.board .brow .price.up { color: var(--good); }
+.board .brow .price.down { color: var(--bad); }
+
+/* ---------- יומן ---------- */
+#log-wrap {
+  background: var(--bg-dark); border: 2px solid var(--scroll-dark);
+  border-radius: 10px; padding: 8px 14px;
+}
+#log-wrap h3 { font-size: .9rem; color: var(--gold); margin-bottom: 4px; }
+#log { list-style: none; max-height: 130px; overflow-y: auto; font-size: .88rem; }
+#log li { padding: 2px 0; border-bottom: 1px dashed rgba(255,255,255,.15); }
+#log li.day-mark { color: var(--gold); font-weight: 700; }
+
+/* ---------- טבלת שיאים ---------- */
+.hs-table { margin: 12px auto; border-collapse: collapse; min-width: 300px; }
+.hs-table th, .hs-table td { border: 1px solid var(--scroll-dark); padding: 6px 14px; }
+.hs-table th { background: var(--board); color: var(--gold); }
+.hs-table td { background: var(--bg-dark); }
+.hs-table tr.me td { background: var(--panel); color: var(--gold); font-weight: 700; }
+
+/* ---------- רספונסיבי ---------- */
+@media (max-width: 760px) {
+  #layout { flex-direction: column; }
+  #sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; }
+  #sidebar .spanel { flex: 1; min-width: 140px; }
+  #boards { grid-template-columns: 1fr; }
+  .menu-scroll .opts { grid-template-columns: 1fr; }
+}

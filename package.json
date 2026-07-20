@@ -1,0 +1,13 @@
+{
+  "name": "socher-hayam-remix",
+  "version": "0.2.0",
+  "private": true,
+  "description": "רימיקס דפדפן נאמן למנוע המשחק המקורי סוחר הים",
+  "type": "module",
+  "scripts": {
+    "test": "node --test src/tests/m1.test.js src/tests/m1b.test.js src/tests/fidelity.test.js",
+    "verify": "node tools/verify-consistency.mjs",
+    "check": "npm run test && npm run verify",
+    "serve": "node tools/serve.mjs"
+  }
+}

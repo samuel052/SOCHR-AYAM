@@ -1,54 +1,41 @@
-# Claude Code Game Studios -- Game Studio Agent Architecture
+# הוראות עבודה — פרויקט סוחר הים
 
-Indie game development managed through 49 coordinated Claude Code subagents.
-Each agent owns a specific domain, enforcing separation of concerns and quality.
+מסמך זה מיועד לכל מודל שפה או מפתח שנכנס למאגר ללא הקשר משיחות קודמות.
 
-## Technology Stack
+## קריאת חובה לפני עבודה
 
-- **Engine**: [CHOOSE: Godot 4 / Unity / Unreal Engine 5]
-- **Language**: [CHOOSE: GDScript / C# / C++ / Blueprint]
-- **Version Control**: Git with trunk-based development
-- **Build System**: [SPECIFY after choosing engine]
-- **Asset Pipeline**: [SPECIFY after choosing engine]
+1. `README.md`
+2. `PROJECT-STATUS.md`
+3. `design/README.md`
+4. בעת שינוי מכניקה: `docs/reverse-engineering/10 - מפרט מנוע מאומת סופית.md`
 
-> **Note**: Engine-specialist agents exist for Godot, Unity, and Unreal with
-> dedicated sub-specialists. Use the set matching your engine.
+## מטרת הפרויקט
 
-## Project Structure
+לבנות רימיקס דפדפן מודרני ל״סוחר הים״. העיצוב וחוויית המשתמש רשאים להשתנות; תוצאות מנוע המשחק חייבות להישאר נאמנות למשחק המקורי.
 
-@.claude/docs/directory-structure.md
+## המצב הטכני המחייב
 
-## Engine Version Reference
+- פלטפורמה: דפדפן.
+- קוד: HTML, CSS ו־JavaScript במודולי ES.
+- בדיקות: Node.js המובנה, ללא תלויות npm חיצוניות.
+- קוד פעיל: `src/` בלבד.
+- מפרט מכניקה קנוני: `docs/reverse-engineering/10 - מפרט מנוע מאומת סופית.md`.
+- בינרי מקור: `reference/original-game/K.com`.
 
-@docs/engine-reference/godot/VERSION.md
+אל תבחר Godot, Unity או Unreal ואל תבצע הסבת מנוע ללא בקשה מפורשת של המשתמש.
 
-## Technical Preferences
+## כללים שאסור להפר
 
-@.claude/docs/technical-preferences.md
+1. אין לשנות נוסחה, סדר קריאות אקראיות, תנאי גבול או סדר אירועים בלי אימות מול המקור ועדכון בדיקות.
+2. אין להשתמש בקבצים תחת `archive/legacy-analysis/` כמקור מידע.
+3. אין לערוך את `reference/original-game/`; זוהי תמונת מקור לקריאה בלבד.
+4. חומרי העיצוב משפיעים על הצגה, זרימה ונגישות — לא על כללי המנוע, אלא אם המשתמש מחליט במפורש על מצב משחק שאינו נאמן למקור.
+5. לאחר שינוי בקוד יש להריץ `npm test` וגם `npm run verify`.
+6. אין לבצע commit או push ללא הוראה מפורשת של המשתמש.
+7. שמור על עברית תקינה ועל ממשק מימין לשמאל.
 
-## Coordination Rules
+## השלב הנוכחי
 
-@.claude/docs/coordination-rules.md
+הפענוח והמנוע הושלמו. המשימה הבאה היא להפוך את חומרי `design/reference-materials/` למסמכי עיצוב מחייבים תחת `design/gdd/` ו־`design/ux/`, לקבל את החלטות המשתמש, ורק לאחר מכן ליישם את המעטפת החזותית ב־`src/ui/` וב־`src/index.html`.
 
-## Collaboration Protocol
-
-**User-driven collaboration, not autonomous execution.**
-Every task follows: **Question -> Options -> Decision -> Draft -> Approval**
-
-- Agents MUST ask "May I write this to [filepath]?" before using Write/Edit tools
-- Agents MUST show drafts or summaries before requesting approval
-- Multi-file changes require explicit approval for the full changeset
-- No commits without user instruction
-
-See `docs/COLLABORATIVE-DESIGN-PRINCIPLE.md` for full protocol and examples.
-
-> **First session?** If the project has no engine configured and no game concept,
-> run `/start` to begin the guided onboarding flow.
-
-## Coding Standards
-
-@.claude/docs/coding-standards.md
-
-## Context Management
-
-@.claude/docs/context-management.md
+אין להתחיל מחדש את הפענוח ואין להחליף את המנוע הקיים. אם מתגלה ספק מכני אמיתי, יש להציג ראיה בינרית ובדיקת רגרסיה ממוקדת.

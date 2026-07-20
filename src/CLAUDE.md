@@ -1,36 +1,10 @@
-# Source Directory
+# קוד המשחק
 
-When writing or editing game code in this directory, follow these standards.
+`src/` היא נקודת הקוד הפעילה היחידה.
 
-## Engine Version Warning
+- `core/` מממש את חוקי המשחק המאומתים. שינוי בו מחייב ראיה מן המקור ובדיקת רגרסיה.
+- `ui/` מכיל את שכבת התצוגה והאינטראקציה, שאותה מותר לעצב מחדש בלי לשנות תוצאות מנוע.
+- `tests/` מכיל 56 בדיקות נאמנות ורגרסיה.
+- `index.html` הוא מסמך הכניסה של המשחק.
 
-The LLM's training data predates the pinned engine version.
-**Always check `docs/engine-reference/` before using any engine API.**
-Do not guess at post-cutoff API signatures — look them up first.
-
-## Coding Standards
-
-- All public APIs require doc comments
-- Gameplay values must be **data-driven** (external config files), never hardcoded
-- Prefer dependency injection over singletons for testability
-- Every new system needs a corresponding ADR in `docs/architecture/`
-- Commits must reference the relevant story ID or design document
-
-## File Routing
-
-Match the engine-specialist agent to the file type being written.
-See `CLAUDE.md` → Technical Preferences → Engine Specialists → File Extension Routing.
-
-When in doubt, use the primary engine specialist configured in `CLAUDE.md`.
-
-## Tests
-
-Tests live in `tests/` — not in `src/`.
-Run `/test-setup` to scaffold the test framework if it doesn't exist yet.
-Every gameplay system should have unit tests covering its formulas and edge cases.
-
-## Verification-Driven Development
-
-Write tests first when adding gameplay systems.
-For UI changes, verify with screenshots.
-Compare expected output to actual output before marking work complete.
+לאחר כל שינוי הרץ משורש המאגר: `npm test` ו־`npm run verify`.

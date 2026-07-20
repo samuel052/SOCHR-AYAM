@@ -1,87 +1,66 @@
-# Technical Preferences
+# Technical Preferences — Socher Hayam
 
-<!-- Populated by /setup-engine. Updated as the user makes decisions throughout development. -->
-<!-- All agents reference this file for project-specific standards and conventions. -->
+This file is authoritative for studio agents. The engine and stack are already configured; do not run engine onboarding.
 
 ## Engine & Language
 
-- **Engine**: [TO BE CONFIGURED — run /setup-engine]
-- **Language**: [TO BE CONFIGURED]
-- **Rendering**: [TO BE CONFIGURED]
-- **Physics**: [TO BE CONFIGURED]
+- **Engine**: Custom browser game; no Godot, Unity or Unreal runtime.
+- **Language**: JavaScript ES modules, HTML and CSS.
+- **Rendering**: Browser DOM, CSS and SVG.
+- **Physics**: None. Gameplay simulation is deterministic JavaScript logic under `src/core/`.
 
 ## Input & Platform
 
-<!-- Written by /setup-engine. Read by /ux-design, /ux-review, /test-setup, /team-ui, and /dev-story -->
-<!-- to scope interaction specs, test helpers, and implementation to the correct input methods. -->
-
-- **Target Platforms**: [TO BE CONFIGURED — e.g., PC, Console, Mobile, Web]
-- **Input Methods**: [TO BE CONFIGURED — e.g., Keyboard/Mouse, Gamepad, Touch, Mixed]
-- **Primary Input**: [TO BE CONFIGURED — the dominant input for this game]
-- **Gamepad Support**: [TO BE CONFIGURED — Full / Partial / None]
-- **Touch Support**: [TO BE CONFIGURED — Full / Partial / None]
-- **Platform Notes**: [TO BE CONFIGURED — any platform-specific UX constraints]
+- **Target Platforms**: Modern desktop and mobile web browsers.
+- **Input Methods**: Mouse, keyboard and touch-capable controls.
+- **Primary Input**: Pointer/touch interaction.
+- **Gamepad Support**: Not currently planned.
+- **Touch Support**: Required for the final UX.
+- **Platform Notes**: Hebrew RTL is primary; responsive layout and readable numeric state are required.
 
 ## Naming Conventions
 
-- **Classes**: [TO BE CONFIGURED]
-- **Variables**: [TO BE CONFIGURED]
-- **Signals/Events**: [TO BE CONFIGURED]
-- **Files**: [TO BE CONFIGURED]
-- **Scenes/Prefabs**: [TO BE CONFIGURED]
-- **Constants**: [TO BE CONFIGURED]
+- **Functions and variables**: `camelCase`.
+- **Classes**: `PascalCase`.
+- **Constants**: existing exported names and domain conventions; avoid gratuitous renames.
+- **Files**: lowercase descriptive names matching the current modules.
+- **Events**: explicit domain verbs and outcomes.
 
 ## Performance Budgets
 
-- **Target Framerate**: [TO BE CONFIGURED]
-- **Frame Budget**: [TO BE CONFIGURED]
-- **Draw Calls**: [TO BE CONFIGURED]
-- **Memory Ceiling**: [TO BE CONFIGURED]
+- **Target Framerate**: 60 FPS for visual transitions.
+- **Simulation**: synchronous actions should be imperceptible to the user.
+- **Dependencies**: prefer zero-runtime-dependency browser code unless a dependency is explicitly approved.
 
 ## Testing
 
-- **Framework**: [TO BE CONFIGURED]
-- **Minimum Coverage**: [TO BE CONFIGURED]
-- **Required Tests**: Balance formulas, gameplay systems, networking (if applicable)
+- **Framework**: Node.js built-in test runner.
+- **Required command**: `npm test`.
+- **Full consistency gate**: `npm run verify`.
+- **Required coverage**: every changed gameplay formula, boundary and event ordering rule needs a regression test.
 
 ## Forbidden Patterns
 
-<!-- Add patterns that should never appear in this project's codebase -->
-- [None configured yet — add as architectural decisions are made]
+- Changing gameplay formulas or RNG call order for presentation convenience.
+- Reading mechanics from `archive/legacy-analysis/`.
+- Editing files under `reference/original-game/`.
+- Introducing an engine migration without explicit user approval.
 
 ## Allowed Libraries / Addons
 
-<!-- Add approved third-party dependencies here -->
-- [None configured yet — add as dependencies are approved]
+- No third-party runtime dependency is currently required.
+- New dependencies require a concrete benefit and user approval.
 
-## Architecture Decisions Log
+## Specialists
 
-<!-- Quick reference linking to full ADRs in docs/architecture/ -->
-- [No ADRs yet — use /architecture-decision to create one]
+- **Gameplay logic**: JavaScript/gameplay programmer with fidelity verification.
+- **UI**: Web UI/UX specialist familiar with Hebrew RTL and responsive interaction.
+- **Architecture**: General web architecture; engine-specific agents are not applicable.
 
-## Engine Specialists
-
-<!-- Written by /setup-engine when engine is configured. -->
-<!-- Read by /code-review, /architecture-decision, /architecture-review, and team skills -->
-<!-- to know which specialist to spawn for engine-specific validation. -->
-
-- **Primary**: [TO BE CONFIGURED — run /setup-engine]
-- **Language/Code Specialist**: [TO BE CONFIGURED]
-- **Shader Specialist**: [TO BE CONFIGURED]
-- **UI Specialist**: [TO BE CONFIGURED]
-- **Additional Specialists**: [TO BE CONFIGURED]
-- **Routing Notes**: [TO BE CONFIGURED]
-
-### File Extension Routing
-
-<!-- Skills use this table to select the right specialist per file type. -->
-<!-- If a row says [TO BE CONFIGURED], fall back to Primary for that file type. -->
-
-| File Extension / Type | Specialist to Spawn |
-|-----------------------|---------------------|
-| Game code (primary language) | [TO BE CONFIGURED] |
-| Shader / material files | [TO BE CONFIGURED] |
-| UI / screen files | [TO BE CONFIGURED] |
-| Scene / prefab / level files | [TO BE CONFIGURED] |
-| Native extension / plugin files | [TO BE CONFIGURED] |
-| General architecture review | Primary |
+| File type | Routing |
+|---|---|
+| `src/core/*.js` | Gameplay programmer + fidelity tests |
+| `src/ui/*.js`, `src/index.html`, CSS | Web UI programmer + UX review |
+| `src/tests/*.test.js` | QA/gameplay verification |
+| `design/**` | Game designer or UX designer |
+| `docs/reverse-engineering/**` | Reverse-engineering reviewer |
